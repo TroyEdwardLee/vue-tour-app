@@ -9,7 +9,7 @@
         <aside-left></aside-left>
       </el-aside>
       <el-main>
-        <p>Main Content</p>
+        <bread-crumb></bread-crumb>
       </el-main>
     </el-container>
     <el-footer class="footer-bottom">
@@ -21,6 +21,7 @@
 import Logo from '@/assets/images/element-ui-logo.svg'
 import HeaderMenu from '@/components/HeaderMenu'
 import AsideLeft from '@/components/AsideLeft'
+import BreadCrumb from '@/components/Breadcrumb'
 export default {
   name: 'container',
   data () {
@@ -30,7 +31,8 @@ export default {
   },
   components: {
     HeaderMenu,
-    AsideLeft
+    AsideLeft,
+    BreadCrumb
   }
 }
 </script>
