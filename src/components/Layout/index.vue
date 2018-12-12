@@ -10,10 +10,11 @@
       </el-aside>
       <el-main>
         <bread-crumb></bread-crumb>
+        <records-list></records-list>
       </el-main>
     </el-container>
     <el-footer class="footer-bottom">
-      <h3>Footer</h3>
+      <h3 style="line-height: 6rem;">Footer</h3>
     </el-footer>
   </el-container>
 </template>
@@ -22,6 +23,7 @@ import Logo from '@/assets/images/element-ui-logo.svg'
 import HeaderMenu from '@/components/HeaderMenu'
 import AsideLeft from '@/components/AsideLeft'
 import BreadCrumb from '@/components/Breadcrumb'
+import RecordsList from '@/views/List'
 export default {
   name: 'container',
   data () {
@@ -32,7 +34,8 @@ export default {
   components: {
     HeaderMenu,
     AsideLeft,
-    BreadCrumb
+    BreadCrumb,
+    RecordsList
   }
 }
 </script>
