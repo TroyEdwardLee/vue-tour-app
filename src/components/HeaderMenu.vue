@@ -28,7 +28,6 @@ export default {
     font-size: 1.4rem;
     float: right;
     height: 100%;
-    margin: 0;
     list-style-type: none;
   }
   li {
