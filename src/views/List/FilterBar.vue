@@ -1,16 +1,19 @@
 <template>
   <el-form label-position="left" :inline="true" :model="formInline" class="query-form">
-    <el-form-item label="审批人">
-      <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+    <el-form-item label="姓名">
+      <el-input v-model="formInline.username" placeholder="审批人"></el-input>
     </el-form-item>
-    <el-form-item label="活动区域">
-      <el-select v-model="formInline.region" placeholder="活动区域">
-        <el-option label="区域一" value="shanghai"></el-option>
-        <el-option label="区域二" value="beijing"></el-option>
-      </el-select>
+    <el-form-item label="日期">
+      <el-date-picker
+        v-model="formInline.daterange"
+        type="daterange"
+        range-separator="-"
+        start-placeholder="开始日期"
+        end-placeholder="结束日期">
+      </el-date-picker>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary">查询</el-button>
+      <el-button type="primary" @click="handleSearch">搜索</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -21,9 +24,14 @@ export default {
   data () {
     return {
       formInline: {
-        user: '',
-        region: ''
+        username: '',
+        daterange: Array
       }
+    }
+  },
+  methods: {
+    handleSearch () {
+      console.log(this.formInline.daterange)
     }
   }
 }
