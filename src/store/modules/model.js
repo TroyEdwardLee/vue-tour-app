@@ -2,11 +2,15 @@ import { getRecordsList } from '@/api/records'
 
 const model = {
   state: {
-    recordsData: null
+    recordsData: []
   },
-  mutations: {},
+  mutations: {
+    updateRecords (state, oData) {
+      state.recordsData = oData
+    }
+  },
   actions: {
-    getRecords (searchParam) {
+    getRecords ({ commit }, searchParam) {
       return getRecordsList(searchParam)
     }
   }

@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import model from './modules/model'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     count: 0
+  },
+  modules: {
+    model
   },
   getters: {},
   mutations: {},

@@ -34,7 +34,12 @@ export default {
   },
   methods: {
     handleSearch () {
-      console.log(this.formInline.daterange)
+      // console.log(this.formInline.daterange)
+      this.$store.dispatch('getRecords', 'master').then(
+        (response) => {
+          this.$store.commit('updateRecords', response)
+        }
+      )
     }
   },
   computed: {
