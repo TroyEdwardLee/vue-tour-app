@@ -1,5 +1,8 @@
 <template>
   <el-form label-position="left" :inline="true" :model="formInline" class="query-form">
+    <el-form-item label="Tag">
+      <el-tag>{{ count }}</el-tag>
+    </el-form-item>
     <el-form-item label="姓名">
       <el-input v-model="formInline.username" placeholder="审批人"></el-input>
     </el-form-item>
@@ -32,6 +35,11 @@ export default {
   methods: {
     handleSearch () {
       console.log(this.formInline.daterange)
+    }
+  },
+  computed: {
+    count () {
+      return this.$store.state.count
     }
   }
 }
