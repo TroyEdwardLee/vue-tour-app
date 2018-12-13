@@ -35,15 +35,15 @@ export default {
     return {}
   },
   created () {},
-  methods: {},
-  computed: {
-    ...mapGetters(['tableData'])
-  },
-  filters: {
-    truncate: function (val) {
+  methods: {
+    truncate (row, column, val) {
       var newline = val.indexOf('\n')
       return newline > 0 ? val.slice(0, newline) : val
     }
-  }
+  },
+  computed: {
+    ...mapGetters(['tableData'])
+  },
+  filters: {}
 }
 </script>

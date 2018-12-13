@@ -1,7 +1,7 @@
 <template>
   <el-form label-position="left" :inline="true" :model="formInline" class="query-form">
-    <el-form-item label="姓名">
-      <el-input v-model="formInline.username" placeholder="审批人"></el-input>
+    <el-form-item label="版本号">
+      <el-input v-model="formInline.commitSha" placeholder="版本号..."></el-input>
     </el-form-item>
     <el-form-item label="日期">
       <el-date-picker
@@ -24,6 +24,7 @@ export default {
   data () {
     return {
       formInline: {
+        commitSha: '',
         username: '',
         daterange: Array
       }
