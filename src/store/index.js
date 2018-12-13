@@ -1,17 +1,26 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import model from './modules/model'
+import { getRecordsList } from '@/api/records'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    recordsData: []
   },
-  modules: {
-    model
+  modules: {},
+  getters: {
+    tableData: state => state.recordsData
   },
-  getters: {},
-  mutations: {},
-  actions: {} // 欢迎加入前端全栈开发交流圈一起学习交流：864305860
+  mutations: {
+    updateRecords (state, oData) {
+      state.recordsData = oData.data
+    }
+  },
+  actions: {
+    getRecords ({ commit }, searchParam) {
+      return getRecordsList(searchParam)
+    }
+  } // 欢迎加入前端全栈开发交流圈一起学习交流：864305860
 })
 
 export default store

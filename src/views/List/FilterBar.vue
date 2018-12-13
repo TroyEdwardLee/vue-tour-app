@@ -32,6 +32,9 @@ export default {
       }
     }
   },
+  created () {
+    this.handleSearch()
+  },
   methods: {
     handleSearch () {
       // console.log(this.formInline.daterange)
