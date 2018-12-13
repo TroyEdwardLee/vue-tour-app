@@ -10,7 +10,7 @@ export function getRecordsListPost (searchParam) {
 
 export function getRecordsList (searchParam) {
   return request({
-    url: `vue-tour-app/commits?per_page=5&sha=${searchParam}`,
+    url: `vue-tour-app/commits?per_page=15&sha=${searchParam}`,
     method: 'get'
   })
 }

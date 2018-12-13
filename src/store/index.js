@@ -4,7 +4,6 @@ import { getRecordsList } from '@/api/records'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    count: 0,
     recordsData: []
   },
   modules: {},
