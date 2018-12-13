@@ -18,7 +18,7 @@
       </el-main>
     </el-container>
     <el-footer class="footer-bottom">
-      <h3 style="line-height: 6rem;">Footer</h3>
+      <h3 style="line-height: 6rem;">© 2018</h3>
     </el-footer>
   </el-container>
 </template>
