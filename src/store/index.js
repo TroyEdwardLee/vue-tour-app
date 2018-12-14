@@ -4,15 +4,20 @@ import { getRecordsList } from '@/api/records'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    recordsData: []
+    recordsData: [],
+    breadcrumbs: []
   },
   modules: {},
   getters: {
-    tableData: state => state.recordsData
+    tableData: state => state.recordsData,
+    breadCrumbs: state => state.breadcrumbs
   },
   mutations: {
     updateRecords (state, oData) {
       state.recordsData = oData.data
+    },
+    updateBreadcrumbs (state, oBreadcrumbs) {
+      state.breadcrumbs = [oBreadcrumbs]
     }
   },
   actions: {

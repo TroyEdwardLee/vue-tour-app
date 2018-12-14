@@ -3,7 +3,7 @@
       <li v-for="menu in menus"
         :key="menu.id"
         :class="{'is-active': activedItem === menu.id}"
-        @click="handleClickSideItem(menu.id)">
+        @click="handleClickSideItem(menu.id, $event)">
         {{ menu.name }}
       </li>
     </ul>
@@ -14,7 +14,6 @@ export default {
   name: 'HeaderMenu',
   data () {
     return {
-      // activedItem: this.$route.name | 'recordsList',
       menus: [
         {name: '页面1', id: 'recordsList'},
         {name: '页面2', id: 'recordContent'},
@@ -22,14 +21,21 @@ export default {
       ]
     }
   },
+  created () {
+    this.$store.commit('updateBreadcrumbs', this.breadCrumb)
+  },
   methods: {
     route (routeName) {
       this.$router.push({
         name: routeName
       })
     },
-    handleClickSideItem (routeName) {
+    handleClickSideItem (routeName, event) {
       this.activedItem = routeName
+      this.$store.commit('updateBreadcrumbs', {
+        name: event.currentTarget.innerText,
+        id: routeName
+      })
       this.route(routeName)
     }
   },
@@ -41,6 +47,21 @@ export default {
       },
       set (newValue) {
         return newValue
+      }
+    },
+    breadCrumb: {
+      get () {
+        let _this = this
+        let oBC = {
+          name: this.menus.find((obj) => {
+            return obj.id === _this.$route.name
+          }).name,
+          id: this.$route.name
+        }
+        return oBC
+      },
+      set (oBreadcrumb) {
+        return oBreadcrumb
       }
     }
   }
