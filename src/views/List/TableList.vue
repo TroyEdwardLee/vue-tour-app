@@ -16,6 +16,7 @@
     </el-table-column>
     <el-table-column
       prop="commit.author.date"
+      :formatter="formatDate"
       label="日期"
       width="180">
     </el-table-column>
@@ -39,11 +40,14 @@ export default {
     truncate (row, column, val) {
       var newline = val.indexOf('\n')
       return newline > 0 ? val.slice(0, newline) : val
+    },
+    formatDate: function (row, column, date) {
+      return this.moment(date).format('YYYY-MM-DD')
     }
   },
+  filters: {},
   computed: {
     ...mapGetters(['tableData'])
-  },
-  filters: {}
+  }
 }
 </script>

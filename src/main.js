@@ -7,6 +7,7 @@ import './plugins/element'
 import store from './store'
 import './main.css'
 import moment from 'moment'
+
 Vue.config.productionTip = false
 
 Vue.prototype.moment = moment
