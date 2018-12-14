@@ -29,7 +29,6 @@ export default {
       })
     },
     handleClickSideItem (routeName) {
-      // eslint-disable-next-line no-undef
       this.activedItem = routeName
       this.route(routeName)
     }
