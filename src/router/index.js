@@ -8,8 +8,24 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home
+      component: Home,
+      children: [
+        {
+          path: '',
+          name: 'recordsList',
+          component: () => import('@/views/List/index')
+        },
+        {
+          path: 'recordContent',
+          name: 'recordContent',
+          component: () => import('@/views/RecordContent/index')
+        },
+        {
+          path: 'content',
+          name: 'content',
+          component: () => import('@/views/RecordContent/index')
+        }
+      ]
     }
   ]
 })

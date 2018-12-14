@@ -3,7 +3,7 @@
       <li v-for="menu in menus"
         :key="menu.id"
         :class="{'is-active': activedItem === menu.id}"
-        @click="activedItem = menu.id">
+        @click="handleClickSideItem(menu.id)">
         {{ menu.name }}
       </li>
     </ul>
@@ -14,12 +14,35 @@ export default {
   name: 'HeaderMenu',
   data () {
     return {
-      activedItem: '',
+      // activedItem: this.$route.name | 'recordsList',
       menus: [
-        {name: '页面1', id: 'menu1'},
-        {name: '页面2', id: 'menu2'},
-        {name: '页面3', id: 'menu3'}
+        {name: '页面1', id: 'recordsList'},
+        {name: '页面2', id: 'recordContent'},
+        {name: '页面3', id: 'content'}
       ]
+    }
+  },
+  methods: {
+    route (routeName) {
+      this.$router.push({
+        name: routeName
+      })
+    },
+    handleClickSideItem (routeName) {
+      // eslint-disable-next-line no-undef
+      this.activedItem = routeName
+      this.route(routeName)
+    }
+  },
+  computed: {
+    activedItem: {
+      get () {
+        let [sFlag = 'recordsList'] = [this.$route.name]
+        return sFlag
+      },
+      set (newValue) {
+        return newValue
+      }
     }
   }
 }
