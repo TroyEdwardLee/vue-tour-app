@@ -6,14 +6,17 @@ import router from './router'
 import './plugins/element'
 import store from './store'
 import './main.css'
-
+import moment from 'moment'
 Vue.config.productionTip = false
+
+Vue.prototype.moment = moment
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
+  moment,
   components: {
     App
   },

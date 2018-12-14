@@ -4,8 +4,10 @@ import {
 } from 'element-ui'
 
 const service = axios.create({
-  baseURL: 'https://api.github.com/repos/TroyEdwardLee/',
-  timeout: 5000
+  // baseURL: 'https://api.github.com/repos/TroyEdwardLee/',
+  baseURL: 'https://api.github.com/search',
+  timeout: 5000,
+  headers: {'Accept': 'application/vnd.github.cloak-preview'}
 })
 
 // 添加请求拦截器

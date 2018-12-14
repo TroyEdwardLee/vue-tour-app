@@ -1,5 +1,11 @@
 <template>
   <el-form label-position="left" :inline="true" :model="formInline" class="query-form">
+    <el-form-item label="提交者">
+      <el-input v-model="formInline.username" placeholder="提交者..."></el-input>
+    </el-form-item>
+    <el-form-item label="代码库">
+      <el-input v-model="formInline.repos" placeholder="username/repository..."></el-input>
+    </el-form-item>
     <el-form-item label="版本号">
       <el-input v-model="formInline.commitSha" placeholder="版本号..."></el-input>
     </el-form-item>
@@ -11,6 +17,9 @@
         start-placeholder="开始日期"
         end-placeholder="结束日期">
       </el-date-picker>
+    </el-form-item>
+    <el-form-item label="描述信息">
+      <el-input v-model="formInline.desc" placeholder="描述信息..."></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="handleSearch">搜索</el-button>
@@ -24,9 +33,11 @@ export default {
   data () {
     return {
       formInline: {
+        repos: '',
         commitSha: '',
         username: '',
-        daterange: Array
+        daterange: Array,
+        desc: ''
       }
     }
   },
@@ -35,7 +46,7 @@ export default {
   },
   methods: {
     handleSearch () {
-      this.$store.dispatch('getRecords', 'master').then(
+      this.$store.dispatch('getRecords', this.formInline).then(
         (response) => {
           this.$store.commit('updateRecords', response)
         }
