@@ -60,10 +60,10 @@ export default {
     transition: all .2s;
   }
   .fade-transform-enter {
-    transform:translateX(10vw)
+    transform: translateX(2rem)
   }
   .fade-transform-leave-to {
-    transform: translateY(-10vh);
+    transform: translateY(-2rem);
     opacity: 0;
   }
   .top-header {
