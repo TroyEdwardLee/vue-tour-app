@@ -56,7 +56,7 @@ export default {
   },
   filters: {
     formatDate (row, column, date) {
-      return moment(date).format('YYYY-MM-DD')
+      return moment(date).format('YYYY-MM-DD HH:mm:ss')
     },
     spliceStr (str) {
       return `${str.slice(0, 8)}...`
