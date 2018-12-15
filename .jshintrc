@@ -9,5 +9,8 @@
   "noempty": true,
   "eqeqeq": true,
   "unused": true,
-  "sub": true
+  "sub": true,
+  "maxdepth": 3,
+  "quotmark": "single",
+  "shadow": "inner"
 }
