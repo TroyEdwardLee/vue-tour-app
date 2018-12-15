@@ -60,7 +60,7 @@ export default {
     transition: all .2s;
   }
   .fade-transform-enter {
-    transform: translateX(2rem)
+    transform: translateX(1rem)
   }
   .fade-transform-leave-to {
     transform: translateY(-2rem);

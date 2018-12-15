@@ -45,13 +45,21 @@ export default {
     this.handleSearch()
   },
   methods: {
+    updateTableLoading (callFunc, bLoading) {
+      this.$store.commit(callFunc, bLoading)
+    },
     handleSearch () {
+      let _this = this
+      this.updateTableLoading('updateLoadingStatus', true)
       this.$store.dispatch('getRecords', this.formInline).then(
         (response) => {
-          this.$store.commit('updateLoadingStatus', false)
-          this.$store.commit('updateRecords', response)
+          _this.updateTableLoading('updateLoadingStatus', false)
+          _this.$store.commit('updateRecords', response)
         }
-      )
+      ).catch(() => {
+        _this.updateTableLoading('updateLoadingStatus', false)
+        _this.$store.commit('updateRecords', [])
+      })
     }
   }
 }
