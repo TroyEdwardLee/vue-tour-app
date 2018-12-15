@@ -48,6 +48,7 @@ export default {
     handleSearch () {
       this.$store.dispatch('getRecords', this.formInline).then(
         (response) => {
+          this.$store.commit('updateLoadingStatus', false)
           this.$store.commit('updateRecords', response)
         }
       )

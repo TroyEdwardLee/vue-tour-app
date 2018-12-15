@@ -6,17 +6,18 @@ import {
 const service = axios.create({
   // baseURL: 'https://api.github.com/repos/TroyEdwardLee/',
   baseURL: 'https://api.github.com/search',
-  timeout: 5000,
+  timeout: 10000,
   headers: {'Accept': 'application/vnd.github.cloak-preview'}
 })
 
 // 添加请求拦截器
 service.interceptors.request.use(config => {
   // 在发送请求之前做些什么
+  // this.$store.commit('updateLoadingStatus', true)
   return config
 }, error => {
   // 对请求错误做些什么
-  this.$store.commit('updateRecords', [])
+  // this.$store.commit('updateRecords', [])
   Notification({
     title: 'Error',
     message: error.message,
@@ -32,7 +33,7 @@ service.interceptors.response.use(response => {
   return response
 }, error => {
   // 对响应错误做点什么
-  this.$store.commit('updateRecords', [])
+  // this.$store.commit('updateRecords', [])
   Notification({
     title: 'Error',
     message: error.message,

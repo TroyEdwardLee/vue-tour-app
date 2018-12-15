@@ -1,5 +1,6 @@
 <template>
   <el-table
+    v-loading="isLoading"
     :data="tableData"
     height="275"
     border
@@ -62,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['tableData'])
+    ...mapGetters(['tableData', 'isLoading'])
   }
 }
 </script>

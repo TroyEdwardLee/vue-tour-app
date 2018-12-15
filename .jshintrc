@@ -1,0 +1,12 @@
+{
+  "asi": true,
+  "esnext": true,
+  "forin": true,
+  "freeze": true,
+  "indent": 2,
+  "latedef": true,
+  "nonbsp": true,
+  "noempty": true,
+  "eqeqeq": true,
+  "sub": true
+}

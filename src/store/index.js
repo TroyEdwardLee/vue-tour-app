@@ -5,12 +5,14 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     recordsData: [],
-    breadcrumbs: []
+    breadcrumbs: [],
+    loadingStatus: true
   },
   modules: {},
   getters: {
     tableData: state => state.recordsData,
-    breadCrumbs: state => state.breadcrumbs
+    breadCrumbs: state => state.breadcrumbs,
+    isLoading: state => state.loadingStatus
   },
   mutations: {
     updateRecords (state, oData) {
@@ -18,6 +20,9 @@ const store = new Vuex.Store({
     },
     updateBreadcrumbs (state, oBreadcrumbs) {
       state.breadcrumbs = [oBreadcrumbs]
+    },
+    updateLoadingStatus (state, bLoading) {
+      state.loadingStatus = bLoading
     }
   },
   actions: {
