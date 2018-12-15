@@ -8,5 +8,6 @@
   "nonbsp": true,
   "noempty": true,
   "eqeqeq": true,
+  "unused": true,
   "sub": true
 }

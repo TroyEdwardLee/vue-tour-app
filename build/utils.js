@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 'use strict'
 const path = require('path')
 const config = require('../config')
@@ -99,3 +100,4 @@ exports.createNotifierCallback = () => {
     })
   }
 }
+/* jshint ignore:end */

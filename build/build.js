@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 'use strict'
 require('./check-versions')()
 
@@ -39,3 +40,4 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     ))
   })
 })
+/* jshint ignore:end */

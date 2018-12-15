@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 'use strict'
 // This is the webpack config used for unit tests.
 

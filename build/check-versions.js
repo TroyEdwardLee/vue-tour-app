@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 'use strict'
 const chalk = require('chalk')
 const semver = require('semver')
@@ -52,3 +53,4 @@ module.exports = function () {
     process.exit(1)
   }
 }
+/* jshint ignore:end */
