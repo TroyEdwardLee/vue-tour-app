@@ -1,8 +1,8 @@
 <template>
     <ul class="header-menu">
       <li>{{$t('pageElText.switchThemeTxt')}}</li>
-      <li>下载主题</li>
-      <li>帮助</li>
+      <li>{{$t('pageElText.downloadTheme')}}</li>
+      <li>{{$t('pageElText.help')}}</li>
       <li>
         <span @click="handleChangeLanguage" class="header-lang"
           :class="{'is-active': language === 'zh'}"
