@@ -5,11 +5,11 @@
       <li>帮助</li>
       <li>
         <span @click="handleChangeLanguage" class="header-lang"
-          :class="{'is-active': isClicked}"
+          :class="{'is-active': language === 'zh'}"
           date-key="zh">中文</span>
         <span>/</span>
         <span @click="handleChangeLanguage" class="header-lang"
-          :class="{'is-active': !isClicked}"
+          :class="{'is-active': language === 'en'}"
           date-key="en">En</span>
       </li>
     </ul>
@@ -21,15 +21,15 @@ export default {
   name: 'HeaderMenu',
   data () {
     return {
-      isClicked: true,
       language: Cookies.get('language') || 'zh'
     }
   },
   methods: {
     handleChangeLanguage (event) {
-      this.isClicked = !this.isClicked
-      this.$i18n.locale = event.currentTarget.getAttribute('date-key')
-      this.$store.commit('setLanguage', event.currentTarget.getAttribute('date-key'))
+      let language = event.currentTarget.getAttribute('date-key')
+      this.language = language
+      this.$i18n.locale = language
+      this.$store.commit('setLanguage', language)
     }
   }
 }
