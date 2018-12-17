@@ -11,8 +11,14 @@ import _ from 'lodash'
 
 Vue.config.productionTip = false
 
-Object.defineProperty(Vue.prototype, '$moment', { value: moment })
-Object.defineProperty(Vue.prototype, '_', { value: _ })
+Object.defineProperties(Vue.prototype, {
+  '_': {
+    value: _
+  },
+  '$moment': {
+    value: moment
+  }
+})
 
 /* eslint-disable no-new */
 new Vue({
@@ -20,6 +26,7 @@ new Vue({
   router,
   store,
   moment,
+  _,
   components: {
     App
   },
