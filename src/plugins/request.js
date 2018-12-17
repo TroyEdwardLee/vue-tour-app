@@ -33,9 +33,9 @@ service.interceptors.response.use(response => {
   // 对响应错误做点什么
   Notification({
     title: 'Error',
-    message: error.message,
+    message: error.response.data.message,
     type: 'error',
-    duration: 3 * 1000
+    duration: 5 * 1000
   })
   return Promise.reject(error)
 })

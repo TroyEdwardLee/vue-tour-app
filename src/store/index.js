@@ -18,8 +18,8 @@ const store = new Vuex.Store({
   },
   mutations: {
     updateRecords (state, oData) {
-      state.recordsData.commitsData = oData.data.items ? oData.data.items : []
-      state.recordsData.total = oData.data.total_count
+      state.recordsData.commitsData = oData.data && oData.data.items ? oData.data.items : []
+      state.recordsData.total = oData.data && oData.data.total_count
     },
     updateBreadcrumbs (state, oBreadcrumbs) {
       state.breadcrumbs = [oBreadcrumbs]

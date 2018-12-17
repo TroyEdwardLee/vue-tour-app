@@ -67,7 +67,7 @@ export default {
   },
   watch: {
     formInline: {
-      handler (val, oldVal) {
+      handler (val) {
         this.$store.commit('updateRequestParam', this._.cloneDeep(val))
       },
       deep: true
