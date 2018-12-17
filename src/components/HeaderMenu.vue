@@ -1,22 +1,35 @@
 <template>
     <ul class="header-menu">
-      <li>切换主题色</li>
+      <li>{{$t('pageElText.switchThemeTxt')}}</li>
       <li>下载主题</li>
       <li>帮助</li>
-      <li @click="isClicked = !isClicked">
-        <span class="header-lang" :class="{'is-active': isClicked}">中文</span>
+      <li>
+        <span @click="handleChangeLanguage" class="header-lang"
+          :class="{'is-active': isClicked}"
+          date-key="zh">中文</span>
         <span>/</span>
-        <span class="header-lang" :class="{'is-active': !isClicked}">En</span>
+        <span @click="handleChangeLanguage" class="header-lang"
+          :class="{'is-active': !isClicked}"
+          date-key="en">En</span>
       </li>
     </ul>
 </template>
 
 <script>
+import Cookies from 'js-cookie'
 export default {
   name: 'HeaderMenu',
   data () {
     return {
-      isClicked: true
+      isClicked: true,
+      language: Cookies.get('language') || 'zh'
+    }
+  },
+  methods: {
+    handleChangeLanguage (event) {
+      this.isClicked = !this.isClicked
+      this.$i18n.locale = event.currentTarget.getAttribute('date-key')
+      this.$store.commit('setLanguage', event.currentTarget.getAttribute('date-key'))
     }
   }
 }

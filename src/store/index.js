@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getRecordsList } from '@/api/records'
+import Cookies from 'js-cookie'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
@@ -17,6 +18,10 @@ const store = new Vuex.Store({
     requestParam: state => state.requestParam
   },
   mutations: {
+    setLanguage: (state, language) => {
+      state.language = language
+      Cookies.set('language', language)
+    },
     updateRecords (state, oData) {
       state.recordsData.commitsData = oData.data && oData.data.items ? oData.data.items : []
       state.recordsData.total = oData.data && oData.data.total_count

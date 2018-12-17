@@ -8,6 +8,7 @@ import store from './store'
 import './main.css'
 import moment from 'moment'
 import _ from 'lodash'
+import i18n from './lang' // 国际化
 
 Vue.config.productionTip = false
 
@@ -27,8 +28,7 @@ new Vue({
   store,
   moment,
   _,
-  components: {
-    App
-  },
+  i18n: i18n,
+  components: { App },
   template: '<App/>'
 })
