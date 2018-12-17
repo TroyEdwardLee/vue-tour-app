@@ -61,6 +61,15 @@ export default {
         _this.$store.commit('updateRecords', [])
       })
     }
+  },
+  watch: {
+    formInline: {
+      handler (val, oldVal) {
+        // console.log(`${val} and ${oldVal}`)
+        this.$store.commit('updateRequestParam', this._.cloneDeep(val))
+      },
+      deep: true
+    }
   }
 }
 </script>

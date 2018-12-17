@@ -4,6 +4,7 @@ import { getRecordsList } from '@/api/records'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
+    requestParam: Object,
     recordsData: [],
     breadcrumbs: [],
     loadingStatus: true
@@ -23,6 +24,9 @@ const store = new Vuex.Store({
     },
     updateLoadingStatus (state, bLoading) {
       state.loadingStatus = bLoading
+    },
+    updateRequestParam (state, oParam) {
+      state.requestParam = oParam
     }
   },
   actions: {

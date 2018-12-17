@@ -17,7 +17,7 @@ export function getRecordsList (searchParam) {
   let qParam = `${authorName}author-date:${authorDateFrom}..${authorDateTo}${repo}`
   return request({
     // url: `vue-tour-app/commits?per_page=15&sha=${searchParam}`,
-    url: `commits?q=${qParam}&type=Commits&sort=author-date&order=desc`,
+    url: `commits?q=${qParam}&type=Commits&sort=author-date&order=desc&page=1&per_page=5`,
     method: 'get'
   })
 }

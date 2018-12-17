@@ -7,10 +7,12 @@ import './plugins/element'
 import store from './store'
 import './main.css'
 import moment from 'moment'
+import _ from 'lodash'
 
 Vue.config.productionTip = false
 
-Vue.prototype.moment = moment
+Object.defineProperty(Vue.prototype, '$moment', { value: moment })
+Object.defineProperty(Vue.prototype, '_', { value: _ })
 
 /* eslint-disable no-new */
 new Vue({
