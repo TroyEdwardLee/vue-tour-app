@@ -36,7 +36,7 @@ export default {
         repos: '',
         commitSha: '',
         username: '',
-        daterange: Array,
+        daterange: [new Date(), new Date()],
         desc: '',
         page: 1,
         per_page: 5
