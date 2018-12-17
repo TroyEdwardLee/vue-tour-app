@@ -5,7 +5,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     requestParam: Object,
-    recordsData: [],
+    recordsData: {commitsData: [], total: Number},
     breadcrumbs: [],
     loadingStatus: true
   },
@@ -13,11 +13,13 @@ const store = new Vuex.Store({
   getters: {
     tableData: state => state.recordsData,
     breadCrumbs: state => state.breadcrumbs,
-    isLoading: state => state.loadingStatus
+    isLoading: state => state.loadingStatus,
+    requestParam: state => state.requestParam
   },
   mutations: {
     updateRecords (state, oData) {
-      state.recordsData = oData.data.items ? oData.data.items : []
+      state.recordsData.commitsData = oData.data.items ? oData.data.items : []
+      state.recordsData.total = oData.data.total_count
     },
     updateBreadcrumbs (state, oBreadcrumbs) {
       state.breadcrumbs = [oBreadcrumbs]

@@ -2,7 +2,7 @@
   <div style="margin-bottom: 6rem;">
     <el-table
       v-loading="isLoading"
-      :data="tableData"
+      :data="tableData.commitsData"
       height="275"
       border
       style="width: 100%">
@@ -42,12 +42,12 @@
       <el-pagination
         @size-change="pageSizeChanged"
         @current-change="pageChanged"
-        :current-page="currentPage"
-        :page-sizes="[10, 20, 50, 100]"
-        :page-size="pageSize"
+        :current-page="requestParam.page"
+        :page-sizes="[5, 10, 20, 50, 100]"
+        :page-size="requestParam.per_page"
         layout="sizes, total, prev, pager, next, jumper"
         class="commen-margin"
-        :total="total"
+        :total="Number(tableData.total)"
         prev-text="上一页"
         next-text="下一页">
       </el-pagination>
@@ -61,23 +61,35 @@ import moment from 'moment'
 export default {
   name: 'TableList',
   data () {
-    return {
-      pageSize: 5,
-      total: 100,
-      currentPage: 1
-    }
+    return {}
   },
-  created () {},
   methods: {
     truncate (row, column, val) {
       var newline = val.indexOf('\n')
       return newline > 0 ? val.slice(0, newline) : val
     },
-    pageSizeChanged () {
-      console.log('test')
+    getCommitsData () {
+      let _this = this
+      this.$store.commit('updateLoadingStatus', true)
+      this.$store.dispatch('getRecords', this.requestParam).then(
+        (response) => {
+          _this.$store.commit('updateLoadingStatus', false)
+          _this.$store.commit('updateRecords', response)
+        }
+      ).catch(() => {
+        _this.$store.commit('updateLoadingStatus', false)
+        _this.$store.commit('updateRecords', [])
+      })
     },
-    pageChanged () {
-      console.log('test')
+    pageSizeChanged (size) {
+      this.requestParam.per_page = size
+      this.$store.commit('updateRequestParam', this._.cloneDeep(this.requestParam))
+      this.getCommitsData()
+    },
+    pageChanged (currentPage) {
+      this.requestParam.page = currentPage
+      this.$store.commit('updateRequestParam', this._.cloneDeep(this.requestParam))
+      this.getCommitsData()
     }
   },
   filters: {
@@ -89,7 +101,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['tableData', 'isLoading'])
+    ...mapGetters(['tableData', 'isLoading', 'requestParam'])
   }
 }
 </script>

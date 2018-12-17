@@ -37,11 +37,14 @@ export default {
         commitSha: '',
         username: '',
         daterange: Array,
-        desc: ''
+        desc: '',
+        page: 1,
+        per_page: 5
       }
     }
   },
   created () {
+    this.$store.commit('updateRequestParam', this._.cloneDeep(this.formInline))
     this.handleSearch()
   },
   methods: {
@@ -65,7 +68,6 @@ export default {
   watch: {
     formInline: {
       handler (val, oldVal) {
-        // console.log(`${val} and ${oldVal}`)
         this.$store.commit('updateRequestParam', this._.cloneDeep(val))
       },
       deep: true
