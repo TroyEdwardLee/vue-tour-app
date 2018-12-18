@@ -1,28 +1,28 @@
 <template>
   <el-form label-position="left" :inline="true" :model="formInline" class="query-form">
-    <el-form-item label="提交者">
-      <el-input v-model="formInline.username" placeholder="提交者..."></el-input>
+    <el-form-item :label="$t('pageElText.committerTxt')">
+      <el-input v-model="formInline.username" :placeholder="$t('pageElText.committerTxt')"></el-input>
     </el-form-item>
-    <el-form-item label="代码库">
-      <el-input v-model="formInline.repos" placeholder="username/repository..."></el-input>
+    <el-form-item :label="$t('pageElText.repositoryTxt')">
+      <el-input v-model="formInline.repos" :placeholder="$t('pageElText.repoPlaceholderTxt')"></el-input>
     </el-form-item>
-    <el-form-item label="版本号">
-      <el-input v-model="formInline.commitSha" placeholder="版本号..."></el-input>
+    <el-form-item :label="$t('pageElText.commitShaTxt')">
+      <el-input v-model="formInline.commitSha" :placeholder="$t('pageElText.commitShaTxt')"></el-input>
     </el-form-item>
-    <el-form-item label="日期">
+    <el-form-item :label="$t('pageElText.dateRangeTxt')">
       <el-date-picker
         v-model="formInline.daterange"
         type="daterange"
         range-separator="-"
-        start-placeholder="开始日期"
-        end-placeholder="结束日期">
+        :start-placeholder="$t('pageElText.dateFromTxt')"
+        :end-placeholder="$t('pageElText.dateToTxt')">
       </el-date-picker>
     </el-form-item>
-    <el-form-item label="描述信息">
-      <el-input v-model="formInline.desc" placeholder="描述信息..."></el-input>
+    <el-form-item :label="$t('pageElText.descTxt')">
+      <el-input v-model="formInline.desc" :placeholder="$t('pageElText.descTxt')"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="handleSearch">搜索</el-button>
+      <el-button type="primary" @click="handleSearch">{{this.$t('buttonElTxt.searchBtnTxt')}}</el-button>
     </el-form-item>
   </el-form>
 </template>

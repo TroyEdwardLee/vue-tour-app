@@ -7,7 +7,7 @@
       border
       style="width: 100%">
       <el-table-column
-        label="版本号"
+        :label="$t('pageElText.commitShaTxt')"
         width="180">
         <template slot-scope="scope">
           <i class="el-icon-tickets"></i>
@@ -16,16 +16,16 @@
       </el-table-column>
       <el-table-column
         prop="commit.author.name"
-        label="提交者"
+        :label="$t('pageElText.committerTxt')"
         width="180">
       </el-table-column>
       <el-table-column
         prop="repository.full_name"
-        label="仓库"
+        :label="$t('pageElText.repositoryTxt')"
         width="180">
       </el-table-column>
       <el-table-column
-        label="日期"
+        :label="$t('pageElText.dateRangeTxt')"
         width="180">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
@@ -35,7 +35,7 @@
       <el-table-column
         prop="commit.message"
         :formatter="truncate"
-        label="描述">
+        :label="$t('pageElText.descTxt')">
       </el-table-column>
     </el-table>
     <div class="block" style="margin-top:30px; text-align:center;">

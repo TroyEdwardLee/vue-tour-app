@@ -6,6 +6,17 @@ export default {
     help: 'Help',
     recordsListTxt: 'Commits List',
     recordContentTxt: 'Detail',
-    otherContentTxt: 'Others'
+    otherContentTxt: 'Others',
+    committerTxt: 'Committer',
+    repositoryTxt: 'repository',
+    commitShaTxt: 'Commit Code',
+    dateRangeTxt: 'Date',
+    descTxt: 'Decs.',
+    dateFromTxt: 'Date From',
+    dateToTxt: 'Date To',
+    repoPlaceholderTxt: 'account/repository'
+  },
+  buttonElTxt: {
+    searchBtnTxt: 'Search'
   }
 }
