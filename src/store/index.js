@@ -5,22 +5,28 @@ import Cookies from 'js-cookie'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
+    language: Cookies.get('language') || 'zh',
     requestParam: Object,
     recordsData: {commitsData: [], total: Number},
     breadcrumbs: [],
-    loadingStatus: true
+    loadingStatus: true,
+    menusList: []
   },
   modules: {},
   getters: {
     tableData: state => state.recordsData,
     breadCrumbs: state => state.breadcrumbs,
     isLoading: state => state.loadingStatus,
-    requestParam: state => state.requestParam
+    requestParam: state => state.requestParam,
+    menus: state => state.menusList
   },
   mutations: {
-    setLanguage: (state, language) => {
+    setLanguage (state, language) {
       state.language = language
       Cookies.set('language', language)
+    },
+    updateMenus (state, aMenus) {
+      state.menusList = aMenus
     },
     updateRecords (state, oData) {
       state.recordsData.commitsData = oData.data && oData.data.items ? oData.data.items : []

@@ -1,7 +1,8 @@
 <template>
-    <ul class="menu-ul">
+    <ul class="menu-ul" ref="menu-ul">
       <li v-for="menu in menus"
         :key="menu.id"
+        :id="menu.id"
         :class="{'is-active': activedItem === menu.id}"
         @click="handleClickSideItem(menu.id, $event)">
         {{ menu.name }}
@@ -10,18 +11,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'HeaderMenu',
   data () {
     return {
-      menus: [
-        {name: '页面1', id: 'recordsList'},
-        {name: '页面2', id: 'recordContent'},
-        {name: '页面3', id: 'content'}
+      menusList: [
+        {name: this.$t('pageElText.recordsListTxt'), id: 'recordsList'},
+        {name: this.$t('pageElText.recordContentTxt'), id: 'recordContent'},
+        {name: this.$t('pageElText.otherContentTxt'), id: 'content'}
       ]
     }
   },
   created () {
+    this.$store.commit('updateMenus', this.menusList)
     this.$store.commit('updateBreadcrumbs', this.breadCrumb)
   },
   methods: {
@@ -40,6 +43,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['menus']),
     activedItem: {
       get () {
         let [sFlag = 'recordsList'] = [this.$route.name]
