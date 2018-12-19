@@ -59,6 +59,7 @@ export default {
   .header-menu {
     font-size: 1.4rem;
     float: right;
+    margin-top: -8rem;
     height: 100%;
     list-style-type: none;
   }

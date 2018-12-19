@@ -9,8 +9,11 @@ import './main.css'
 import moment from 'moment'
 import _ from 'lodash'
 import i18n from './lang' // 国际化
+import VueParticles from 'vue-particles'
 
 Vue.config.productionTip = false
+
+Vue.use(VueParticles)
 
 Object.defineProperties(Vue.prototype, {
   '_': {
