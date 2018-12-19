@@ -11,7 +11,7 @@
         width="180">
         <template slot-scope="scope">
           <i class="el-icon-tickets"></i>
-          <a :href="scope.row.html_url" target="_blank">{{ scope.row.sha | spliceStr }}</a>
+          <a class="commit-sha-link" :href="scope.row.html_url" target="_blank">{{ scope.row.sha | spliceStr }}</a>
         </template>
       </el-table-column>
       <el-table-column
@@ -107,11 +107,11 @@ export default {
 }
 </script>
 <style scoped>
-  a {
+  .commit-sha-link {
     color: #0366d6;
     text-decoration: none;
   }
-  a::after {
+  .commit-sha-link::after {
     color: #0366d6;
   }
 </style>

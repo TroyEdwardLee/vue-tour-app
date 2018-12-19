@@ -56,13 +56,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  ul {
+  .header-menu {
     font-size: 1.4rem;
     float: right;
     height: 100%;
     list-style-type: none;
   }
-  li {
+  .header-menu > li {
     color: aliceblue;
     float: left;
     vertical-align: middle;

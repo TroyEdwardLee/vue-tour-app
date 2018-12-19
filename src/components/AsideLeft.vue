@@ -1,6 +1,7 @@
 <template>
     <ul class="menu-ul" ref="menu-ul">
       <li v-for="menu in menus"
+        class="menu-ul-li"
         :key="menu.id"
         :id="menu.id"
         :class="{'is-active': activedItem === menu.id}"
@@ -74,14 +75,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  ul {
+  .menu-ul {
     font-size: 1.4rem;
     position: relative;
     width: 100%;
     height: 100%;
     list-style-type: none;
   }
-  li {
+  .menu-ul-li {
     color: #303133;
     text-align: left;
     vertical-align: middle;
@@ -90,10 +91,10 @@ export default {
     cursor: pointer;
     transition: border-color .3s, background-color .3s, color .3s;
   }
-  li:hover {
+  .menu-ul-li:hover {
     background-color: #ecf5ff;
   }
-  li.is-active {
+  .is-active {
     background-color: #ecf5ff;
     color: #409eff;
   }
