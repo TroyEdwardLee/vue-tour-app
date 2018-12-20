@@ -17,6 +17,8 @@ export default {
     repoPlaceholderTxt: 'account/repository'
   },
   buttonElTxt: {
-    searchBtnTxt: 'Search'
+    searchBtnTxt: 'Search',
+    prevText: 'Previous',
+    nextText: 'Next'
   }
 }

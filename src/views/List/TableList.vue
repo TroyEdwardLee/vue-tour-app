@@ -49,8 +49,8 @@
         layout="sizes, total, prev, pager, next, jumper"
         class="commen-margin"
         :total="Number(tableData.total)"
-        prev-text="上一页"
-        next-text="下一页">
+        :prev-text="$t('buttonElTxt.prevText')"
+        :next-text="$t('buttonElTxt.nextText')">
       </el-pagination>
     </div>
   </div>

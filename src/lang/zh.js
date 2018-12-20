@@ -17,6 +17,8 @@ export default {
     repoPlaceholderTxt: '登录名/代码仓'
   },
   buttonElTxt: {
-    searchBtnTxt: '搜索'
+    searchBtnTxt: '搜索',
+    prevText: '上一页',
+    nextText: '下一页'
   }
 }
