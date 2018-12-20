@@ -42,7 +42,6 @@
         <transition name="fade-transform" mode="out-in">
           <keep-alive>
             <router-view></router-view>
-            <!-- <records-list></records-list> -->
           </keep-alive>
         </transition>
       </el-main>
