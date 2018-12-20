@@ -1,5 +1,6 @@
 <template>
   <div style="margin-bottom: 6rem;">
+    <component :is="componentId"></component>
     <el-table
       v-loading="isLoading"
       :data="tableData.commitsData"
@@ -57,11 +58,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import TagSuccess from '@/components/TagSuccess'
 // import moment from 'moment'
 export default {
   name: 'TableList',
   data () {
-    return {}
+    return {
+      componentId: null
+    }
   },
   methods: {
     truncate (row, column, val) {
@@ -73,6 +77,7 @@ export default {
       this.$store.commit('updateLoadingStatus', true)
       this.$store.dispatch('getRecords', this.requestParam).then(
         (response) => {
+          _this.componentId = TagSuccess
           _this.$store.commit('updateLoadingStatus', false)
           _this.$store.commit('updateRecords', response)
         }
@@ -82,12 +87,14 @@ export default {
       })
     },
     pageSizeChanged (size) {
+      this.componentId = null
       this.requestParam.per_page = size
       this.$store.commit('updateRequestParam', this._.cloneDeep(this.requestParam))
       this.getCommitsData()
     },
     pageChanged (currentPage) {
       this.requestParam.page = currentPage
+      this.componentId = null
       this.$store.commit('updateRequestParam', this._.cloneDeep(this.requestParam))
       this.getCommitsData()
     }
