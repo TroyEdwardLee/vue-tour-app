@@ -10,6 +10,7 @@ import moment from 'moment'
 import _ from 'lodash'
 import i18n from './lang' // 国际化
 import VueParticles from 'vue-particles'
+import 'font-awesome/css/font-awesome.css'
 
 Vue.config.productionTip = false
 
