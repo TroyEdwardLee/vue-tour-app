@@ -12,7 +12,7 @@ export default {
   name: 'RecordContent',
   data () {
     return {
-      title: 'TransferTree',
+      title: ['Source', 'Target'],
       mode: 'transfer', // transfer addressList
       fromData: [
         {
