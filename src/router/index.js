@@ -21,9 +21,9 @@ export default new Router({
           component: () => import('@/views/RecordContent/index')
         },
         {
-          path: 'content',
-          name: 'content',
-          component: () => import('@/views/RecordContent/index')
+          path: 'otherContent',
+          name: 'otherContent',
+          component: () => import('@/views/OtherContent/index')
         }
       ]
     }

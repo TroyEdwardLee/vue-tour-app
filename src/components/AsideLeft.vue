@@ -20,7 +20,7 @@ export default {
       menusList: [
         {name: this.$t('pageElText.recordsListTxt'), id: 'recordsList'},
         {name: this.$t('pageElText.recordContentTxt'), id: 'recordContent'},
-        {name: this.$t('pageElText.otherContentTxt'), id: 'content'}
+        {name: this.$t('pageElText.otherContentTxt'), id: 'otherContent'}
       ]
     }
   },
