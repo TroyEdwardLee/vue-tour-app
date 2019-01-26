@@ -1,25 +1,26 @@
 <template>
-  <div>
+  <div style="margin-top: 2rem;">
     <el-table
       :data="websiteList"
       style="width: 100%">
       <el-table-column
         prop="name"
         label="Name"
-        width="180">
+        width="200">
       </el-table-column>
       <el-table-column
         prop="url"
-        label="Url"
-        width="180">
+        label="Url">
       </el-table-column>
       <el-table-column
         prop="alexa"
-        label="Alexa">
+        label="Alexa"
+        width="180">
       </el-table-column>
       <el-table-column
         prop="country"
-        label="Country">
+        label="Country"
+        width="180">
       </el-table-column>
     </el-table>
   </div>
