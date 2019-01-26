@@ -2,7 +2,7 @@ import request from '@/plugins/request'
 
 export function getWebsitesInfo () {
   return request({
-    url: '/api/sys/getSys',
+    url: '/api/getWebsite',
     method: 'get'
   })
 }
