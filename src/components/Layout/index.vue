@@ -35,7 +35,7 @@
           <aside-left></aside-left>
         </el-aside>
       </keep-alive>
-      <el-main style="margin-left: 30rem;">
+      <el-main style="margin-left: 25rem;">
         <keep-alive>
           <bread-crumb></bread-crumb>
         </keep-alive>

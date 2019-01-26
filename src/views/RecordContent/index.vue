@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top: 2rem;">
     <tree-transfer
       :title="title"
       :from_data="JsonData"
