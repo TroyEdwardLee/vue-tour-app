@@ -2,12 +2,10 @@ import axios from 'axios'
 import {
   Notification
 } from 'element-ui'
-
+// axios.defaults.headers['Content-Type']
 const service = axios.create({
-  // baseURL: 'https://api.github.com/repos/TroyEdwardLee/',
-  baseURL: 'https://api.github.com/search',
-  timeout: 10000,
-  headers: {'Accept': 'application/vnd.github.cloak-preview'}
+  // baseURL: 'https://api.github.com/search',
+  timeout: 10000
 })
 
 // 添加请求拦截器
