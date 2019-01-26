@@ -1,11 +1,12 @@
 import request from '@/plugins/request'
 import moment from 'moment'
-
+const baseUrl = 'https://api.github.com/search/'
 export function getRecordsListPost (searchParam) {
   return request({
-    url: 'vue-tour-app/commits?per_page=5&sha=',
+    url: `${baseUrl}vue-tour-app/commits?per_page=5&sha=`,
     method: 'post',
-    data: searchParam
+    data: searchParam,
+    headers: {'Accept': 'application/vnd.github.cloak-preview'}
   })
 }
 
@@ -19,7 +20,8 @@ export function getRecordsList (searchParam) {
   let qParam = `${authorName}${description}${commitCode}${repo}author-date:${authorDateFrom}..${authorDateTo}`
   return request({
     // url: `vue-tour-app/commits?per_page=15&sha=${searchParam}`,
-    url: `commits?q=${qParam}&type=Commits&sort=author-date&order=desc&page=${searchParam.page}&per_page=${searchParam.per_page}`,
-    method: 'get'
+    url: `${baseUrl}commits?q=${qParam}&type=Commits&sort=author-date&order=desc&page=${searchParam.page}&per_page=${searchParam.per_page}`,
+    method: 'get',
+    headers: {'Accept': 'application/vnd.github.cloak-preview'}
   })
 }
