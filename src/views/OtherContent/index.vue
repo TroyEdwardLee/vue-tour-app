@@ -36,6 +36,7 @@
       </el-form>
     </el-col>
     <el-table
+      v-loading="isLoading"
       :data="websiteList"
       :style="{ width: '100%' }"
       border>
@@ -68,6 +69,7 @@ export default {
   name: 'OtherContent',
   data () {
     return {
+      isLoading: false,
       websiteList: [],
       filters: {
         searchParam: ''
@@ -82,8 +84,10 @@ export default {
       this.handleQuery()
     },
     handleQuery () {
+      this.isLoading = true
       let param = { keyword: this.filters.searchParam }
       fuzzyWebsitesInfo(param).then((res) => {
+        this.isLoading = false
         if (res.status) {
           this.websiteList = res.data.data
         } else {
@@ -93,6 +97,7 @@ export default {
           })
         }
       }).catch((err) => {
+        this.isLoading = false
         this.$notify.error({
           title: '错误',
           message: err.message
