@@ -9,6 +9,7 @@
           <el-input v-model="filters.searchParam" placeholder="请输入检索值..."
             @keyup.enter.native="handleQuery"
             @blur="handleQuery"
+            @clear="handleQuery"
             clearable></el-input>
         </el-form-item>
         <el-form-item>
