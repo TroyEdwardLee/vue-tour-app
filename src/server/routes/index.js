@@ -31,6 +31,32 @@ const queryWebsite = router.get('/getWebsite', (req, res) => {
   })
 })
 
+const fuzzyQueryWebsite = router.post('/fuzzyQueryWebsite', (req, res) => {
+  let param = `${$sql.fuzzyQuery} '%${req.body.keyword}%'`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          data: [],
+          status: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        data: result,
+        status: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
 module.exports = {
-  queryWebsite
+  queryWebsite,
+  fuzzyQueryWebsite
 }

@@ -6,3 +6,10 @@ export function getWebsitesInfo () {
     method: 'get'
   })
 }
+export function fuzzyWebsitesInfo (param) {
+  return request({
+    url: '/api/fuzzyQueryWebsite',
+    method: 'post',
+    data: param
+  })
+}
