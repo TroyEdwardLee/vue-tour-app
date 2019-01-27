@@ -7,7 +7,9 @@
         @submit.native.prevent>
         <el-form-item>
           <el-input v-model="filters.searchParam" placeholder="请输入检索值..."
-            @keyup.enter.native="handleQuery" clearable></el-input>
+            @keyup.enter.native="handleQuery"
+            @blur="handleQuery"
+            clearable></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" v-on:click="handleQuery" icon="el-icon-search">查询</el-button>
@@ -95,7 +97,6 @@ export default {
           message: err.message
         })
       })
-      console.log(123)
     }
   },
   components: {} // 注册
