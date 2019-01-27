@@ -32,6 +32,30 @@ const fuzzyQueryWebsite = router.post('/fuzzyQueryWebsite', (req, res) => {
   })
 })
 
+const insertWebsite = router.post('/addWebsite', (req, res) => {
+  let param = `${$sql.insertWebsite}('${req.body.name}', ${req.body.alexa}, '${req.body.country}', '${req.body.url}')`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          status: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        status: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
 module.exports = {
-  fuzzyQueryWebsite
+  fuzzyQueryWebsite,
+  insertWebsite
 }

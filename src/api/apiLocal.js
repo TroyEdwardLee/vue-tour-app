@@ -7,3 +7,11 @@ export function fuzzyWebsitesInfo (param) {
     data: param
   })
 }
+
+export function addWebsite (param) {
+  return request({
+    url: '/api/addWebsite',
+    method: 'post',
+    data: param
+  })
+}
