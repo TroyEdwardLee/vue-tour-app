@@ -124,6 +124,7 @@ export default {
   }
   .aside-menu {
     position: fixed;
+    width: 25rem !important;
     height: 100%;
     border-right: 1px solid #e6e6e6;
   }
