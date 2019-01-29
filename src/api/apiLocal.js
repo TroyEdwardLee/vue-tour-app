@@ -15,3 +15,11 @@ export function addWebsite (param) {
     data: param
   })
 }
+
+export function fuzzyPlanList (param) {
+  return request({
+    url: '/api/plan/listpage',
+    method: 'post',
+    data: param
+  })
+}
