@@ -55,7 +55,90 @@ const insertWebsite = router.post('/addWebsite', (req, res) => {
   })
 })
 
+const fuzzyQueryPlans = router.post('/plan/listpage', (req, res) => {
+  let param = `${$sql.fuzzyQueryPlans} '%${req.body.blurCheck}%'`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          result: {
+            list: []
+          },
+          success: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        result: {
+          list: result
+        },
+        success: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
+const insertPlan = router.post('/plan/addPlan', (req, res) => {
+  let planId = req.body.planId ? req.body.planId : `plan${new Date().getTime()}`
+  let param = `${$sql.insertPlan}('${planId}','${req.body.planName}', '${req.body.version}', '${req.body.executionMethod}', 'Not Start', 'admin', '${new Date().getTime()}')`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          success: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        success: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
+const deletePlan = router.post('/plan/remove', (req, res) => {
+  let planIds = ''
+  planIds += req.body.ids.map(item => {
+    return `'${item.toString()}'`
+  })
+  let param = `${$sql.delPlans}(${planIds})`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          success: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        success: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
 module.exports = {
   fuzzyQueryWebsite,
-  insertWebsite
+  insertWebsite,
+  fuzzyQueryPlans,
+  insertPlan,
+  deletePlan
 }
