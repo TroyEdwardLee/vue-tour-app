@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { fuzzyCaseList } from '@/api/apiLocal'
+import { fuzzyWebsitesInfo } from '@/api/apiLocal'
 export default {
   name: 'OtherContent',
   data () {
@@ -97,8 +97,8 @@ export default {
     },
     handleQuery () {
       this.isLoading = true
-      let param = { blurCheck: this.filters.searchParam }
-      fuzzyCaseList(param).then((res) => {
+      let param = { keyword: this.filters.searchParam }
+      fuzzyWebsitesInfo(param).then((res) => {
         this.isLoading = false
         if (res.status) {
           this.websiteList = res.data.data

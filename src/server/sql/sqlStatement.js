@@ -1,6 +1,6 @@
 const sqlStatement = {
   queryAll: 'select * from websites.websites',
-  fuzzyQuery: 'select * from websites.websites where CONCAT(websites.`name`, websites.url, websites.country) like',
+  fuzzyQuery: 'select * from websites where CONCAT(websites.`name`, websites.url, websites.country) like',
   insertWebsite: 'INSERT INTO websites.websites (name, alexa, country, url) VALUES ',
   fuzzyQueryPlans: 'select * from websites.plans where CONCAT(planName, version, `status`, executionMethod) like',
   insertPlan: 'REPLACE INTO websites.plans (planId, planName, version, executionMethod, status, updateBy, updateTime) VALUES ',
