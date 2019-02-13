@@ -164,11 +164,64 @@ const fuzzyQueryCases = router.post('/case/listpage', (req, res) => {
   })
 })
 
+const deleteCase = router.post('/case/delete', (req, res) => {
+  let caseIds = ''
+  caseIds += req.body.ids.map(item => {
+    return `'${item.toString()}'`
+  })
+  let param = `${$sql.delCases}(${caseIds})`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          success: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        success: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
+const insertCase = router.post('/case/add', (req, res) => {
+  let testcaseId = req.body.testcase_id ? req.body.testcase_id : `case${new Date().getTime()}`
+  let param = `${$sql.insertCase}('${testcaseId}', '${req.body.testcase_name}', '${req.body.testcase_domain}', '${req.body.testcase_module}', '${req.body.testcase_url}', '${req.body.testcase_method}', '${req.body.testcase_header}', '${req.body.testcase_body}', '${req.body.testcase_expected}', 'yugang.li', 'yugang.li', '${new Date().getTime()}', '${new Date().getTime()}')`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          success: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        success: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
 module.exports = {
   fuzzyQueryWebsite,
   insertWebsite,
   fuzzyQueryPlans,
   insertPlan,
   deletePlan,
-  fuzzyQueryCases
+  fuzzyQueryCases,
+  deleteCase,
+  insertCase
 }
