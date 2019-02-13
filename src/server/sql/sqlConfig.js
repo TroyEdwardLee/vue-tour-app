@@ -2,8 +2,7 @@ const sqlConfig = {
   host: 'localhost',
   user: 'root',
   password: 'Admin@123',
-  // database: 'websites',
-  database: 'test_plans',
+  database: 'websites',
   port: '3306'
 }
 
