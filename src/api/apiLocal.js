@@ -18,7 +18,15 @@ export function addWebsite (param) {
 
 export function fuzzyPlanList (param) {
   return request({
-    url: '/api/plan/listpage',
+    url: '/automation/plan/listpage',
+    method: 'post',
+    data: param
+  })
+}
+
+export function fuzzyCaseList (param) {
+  return request({
+    url: '/automation/case/listpage',
     method: 'post',
     data: param
   })

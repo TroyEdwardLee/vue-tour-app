@@ -135,10 +135,40 @@ const deletePlan = router.post('/plan/remove', (req, res) => {
   })
 })
 
+const fuzzyQueryCases = router.post('/case/listpage', (req, res) => {
+  let param = `${$sql.fuzzyQueryCases} '%${req.body.blurCheck}%'`
+  connection.query(param, (err, result) => {
+    if (err) {
+      res.status(500)
+      res.json(
+        {
+          result: {
+            list: []
+          },
+          success: false,
+          message: err
+        }
+      )
+      return
+    }
+    res.status(200)
+    res.json(
+      {
+        result: {
+          list: result
+        },
+        success: true,
+        message: 'Request successfully!'
+      }
+    )
+  })
+})
+
 module.exports = {
   fuzzyQueryWebsite,
   insertWebsite,
   fuzzyQueryPlans,
   insertPlan,
-  deletePlan
+  deletePlan,
+  fuzzyQueryCases
 }
