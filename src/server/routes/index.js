@@ -155,7 +155,8 @@ const fuzzyQueryCases = router.post('/case/listpage', (req, res) => {
     res.json(
       {
         result: {
-          list: result
+          list: result,
+          total: result.length
         },
         success: true,
         message: 'Request successfully!'
