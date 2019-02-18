@@ -193,8 +193,8 @@ const deleteCase = router.post('/case/delete', (req, res) => {
 })
 
 const insertCase = router.post('/case/add', (req, res) => {
-  let testcaseId = req.body.testcase_id ? req.body.testcase_id : `case${new Date().getTime()}`
-  let param = `${$sql.insertCase}('${testcaseId}', '${req.body.testcase_name}', '${req.body.testcase_domain}', '${req.body.testcase_module}', '${req.body.testcase_url}', '${req.body.testcase_method}', '${req.body.testcase_header}', '${req.body.testcase_body}', '${req.body.testcase_expected}', 'yugang.li', 'yugang.li', '${new Date().getTime()}', '${new Date().getTime()}')`
+  let sId = req.body.testcaseId ? req.body.testcaseId : `case${new Date().getTime()}`
+  let param = `${$sql.insertCase}('${sId}', '${req.body.testcaseName}', '${req.body.testcaseDomain}', '${req.body.testcaseModule}', '${req.body.testcaseUrl}', '${req.body.testcaseMethod}', '${req.body.testcaseHeader}', '${req.body.testcaseBody}', '${req.body.testcaseExpected}', 'yugang.li', 'yugang.li', '${new Date().getTime()}', '${new Date().getTime()}')`
   connection.query(param, (err, result) => {
     if (err) {
       res.status(500)
