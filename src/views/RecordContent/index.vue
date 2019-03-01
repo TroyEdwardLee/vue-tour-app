@@ -1,6 +1,7 @@
 <template>
   <div style="margin-top: 2rem;">
     <tree-transfer
+      v-show="false"
       :title="title"
       :from_data="JsonData"
       :to_data="toData"
@@ -12,10 +13,31 @@
       filter
       openAll
     ></tree-transfer>
+    <el-row :gutter="20">
+      <ElCol :span="10">
+        <draggable element="ul" class="list-group scroll-style" :options="{group:'columns'}" v-model="tableDragSourceColumns" @start="drag=true" @end="drag=false">
+          <li class="list-group-item" v-for="element in tableDragSourceColumns" :key="element.key">
+            <input type="checkbox" name="element.showText" id="'item' + index">
+            <label for="'item' + index">
+              {{element.showText}}
+            </label>
+          </li>
+        </draggable>
+      </ElCol>
+      <ElCol :span="2"></ElCol>
+      <ElCol :span="10">
+        <draggable element="ul" class="list-group scroll-style" :options="{group:'columns'}" v-model="tableDragTargetColumns" @start="drag=true" @end="drag=false">
+          <li class="list-group-item" v-for="element in tableDragTargetColumns" :key="element.key">
+            {{element.showText}}
+          </li>
+        </draggable>
+      </ElCol>
+    </el-row>
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import treeTransfer from 'el-tree-transfer' // 引入
 import { exportTreeData } from '@/utils/index' // 引入
 export default {
@@ -483,7 +505,26 @@ export default {
         errorCode: '0',
         errorMsg: 'Success'
       },
-      toData: []
+      toData: [],
+      tableDragTargetColumns: [],
+      tableDragSourceColumns: [
+        {
+          'showText': 'dog 1',
+          'key': 1
+        },
+        {
+          'showText': 'dog 2',
+          'key': 2
+        },
+        {
+          'showText': 'dog 3',
+          'key': 3
+        },
+        {
+          'showText': 'dog 4',
+          'key': 4
+        }
+      ]
     }
   },
   computed: {
@@ -533,6 +574,17 @@ export default {
     },
     exportTreeData
   },
-  components: { treeTransfer } // 注册
+  components: { treeTransfer, draggable } // 注册
 }
 </script>
+<style scoped>
+.list-group {
+  border: 1px solid #eee;
+  height: 300px;
+  width: 160px;
+  list-style: none;
+}
+.list-group-item {
+  cursor: move;
+}
+</style>
