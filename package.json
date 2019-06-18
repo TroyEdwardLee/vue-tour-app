@@ -108,7 +108,7 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": ">=3.3.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.0.0",
+    "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.0"
   },
   "browserslist": [
@@ -117,7 +117,7 @@
     "not ie <= 8"
   ],
   "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+    "node": ">= 10.15.3",
+    "npm": ">= 6.4.1"
   }
 }
