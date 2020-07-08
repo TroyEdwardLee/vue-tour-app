@@ -1,7 +1,7 @@
 const sqlConfig = {
   host: 'localhost',
   user: 'root',
-  password: 'Admin@123',
+  password: 'Lyg201608',
   database: 'websites',
   port: '3306'
 }
