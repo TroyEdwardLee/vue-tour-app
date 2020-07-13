@@ -29,8 +29,13 @@ const store = new Vuex.Store({
       state.menusList = aMenus
     },
     updateRecords (state, oData) {
-      state.recordsData.commitsData = oData.data && oData.data.items ? oData.data.items : []
-      state.recordsData.total = oData.data && oData.data.total_count
+      if (oData.data) {
+        state.recordsData.commitsData = oData.data && oData.data.items ? oData.data.items : []
+        state.recordsData.total = oData.data && oData.data.total_count
+      } else {
+        state.recordsData.commitsData = []
+        state.recordsData.total = 0
+      }
     },
     updateBreadcrumbs (state, oBreadcrumbs) {
       state.breadcrumbs = [oBreadcrumbs]
