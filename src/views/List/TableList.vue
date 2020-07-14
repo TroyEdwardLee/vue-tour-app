@@ -4,7 +4,7 @@
     <el-table
       v-loading="isLoading"
       :data="tableData.commitsData"
-      height="275"
+      height="335"
       border
       style="width: 100%">
       <el-table-column

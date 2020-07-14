@@ -72,10 +72,12 @@
         width="180">
       </el-table-column>
     </el-table>
+    <div id="echart-container" class="chart-box"></div>
   </div>
 </template>
 
 <script>
+import echarts from 'echarts'
 import { fuzzyWebsitesInfo } from '@/api/apiLocal'
 export default {
   name: 'OtherContent',
@@ -85,11 +87,14 @@ export default {
       websiteList: [],
       filters: {
         searchParam: ''
-      }
+      },
+      oEchart: null
     }
   },
   mounted () {
+    this.oEchart = this._drawChartLayout()
     this.getWebsites()
+    // this._drawEchart()
   },
   methods: {
     getWebsites () {
@@ -98,10 +103,13 @@ export default {
     handleQuery () {
       this.isLoading = true
       let param = { keyword: this.filters.searchParam }
+      this.oEchart.showLoading()
       fuzzyWebsitesInfo(param).then((res) => {
         this.isLoading = false
+        this.oEchart.hideLoading()
         if (res.status) {
           this.websiteList = res.data.data
+          this._drawEchart()
         } else {
           this.$notify.error({
             title: '错误',
@@ -110,11 +118,53 @@ export default {
         }
       }).catch((err) => {
         this.isLoading = false
+        this.oEchart.hideLoading()
         this.$notify.error({
           title: '错误',
           message: err.message
         })
       })
+    },
+    _drawChartLayout () {
+      let oChart = echarts.init(document.getElementById('echart-container'))
+      oChart.setOption({
+        title: {
+          text: '访问量统计视图'
+        },
+        tooltip: {},
+        legend: {
+          data: ['Alexa']
+        },
+        xAxis: {
+          type: 'category'
+        },
+        yAxis: {},
+        series: [{
+          type: 'bar'
+        }]
+      })
+      return oChart
+    },
+    _drawEchart () {
+      var option = {
+        legend: {},
+        tooltip: {},
+        dataset: {
+          // 用 dimensions 指定了维度的顺序。直角坐标系中，
+          // 默认把第一个维度映射到 X 轴上，第二个维度映射到 Y 轴上。
+          // 如果不指定 dimensions，也可以通过指定 series.encode
+          // 完成映射，参见后文。
+          dimensions: ['name', 'alexa'],
+          source: this.websiteList
+        },
+        xAxis: {type: 'category'},
+        yAxis: {},
+        series: [
+          {type: 'bar'}
+        ]
+      }
+      // use configuration item and data specified to show chart
+      this.oEchart.setOption(option)
     },
     handleOpenAddDialog () {
       this.$alert('这是一段内容', '标题名称', {
@@ -151,5 +201,10 @@ export default {
     padding-bottom: 0;
     margin: 0 0 1rem 0;
     text-align: left;
+  }
+  .chart-box {
+    margin: 5rem;
+    width: 100%;
+    height: 48rem;
   }
 </style>
