@@ -27,3 +27,20 @@ export function exportTreeData (data, topPidVal, idStr, pidStr) {
   })
   return treeData // 返回树形数据
 }
+
+/**
+ * For group array object with fieldKey
+ * @param {Array} arr
+ * @param {String} fieldKey
+ */
+export function groupBy (arr, fieldKey) {
+  return arr.reduce((obj, item) => {
+    if (!obj[item[fieldKey]]) {
+      obj[item[fieldKey]] = []
+      obj[item[fieldKey]].push(item)
+    } else {
+      obj[item[fieldKey]].push(item)
+    }
+    return obj
+  }, {})
+}
